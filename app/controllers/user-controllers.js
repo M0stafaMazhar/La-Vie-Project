@@ -6,7 +6,9 @@ class UserContrllers{
         try{
             const userData = new userModel(req.body)
             await userData.save()
-            helper.sendMail(userData.email, userData._id)
+            const message = "Thanks for signing up for la vie, please click the following link to verify your email address : http://localhost:3000/api/user/verify/"
+            const subject = "Email verification"
+            helper.sendMail(userData.email, userData._id , message , subject)
             helper.resHandler(res , 200 , true , userData , "User added successfully!")
         }
         catch(err){
@@ -35,11 +37,47 @@ class UserContrllers{
         }
     }
 
+    static socialLogin (req, res){
+        try {
+        helper.resHandler(res , 200 , true , req.user , "logged in successfully!")
+        } 
+        catch (err) {
+        helper.resHandler(res, 500, false, err, err.message) 
+        }
+        
+    }
+
     static logout = async (req, res)=>{
         try{
             req.user.tokens = req.user.tokens.filter(t => t.token !== req.token)
             await req.user.save()
             helper.resHandler(res, 200, true, {} , "Logged out successfully!")
+        }
+        catch(err){
+            helper.resHandler(res, 500, false, err, err.message)
+        }
+    }
+
+    static forgotPassword = async (req, res) => {
+        try{
+            const user = await userModel.findOne({email: req.body.email})
+            if(!user) throw new Error("User not found")
+            const message = "please click the following link to reset your password : http://localhost:3000/api/user/reset-password/"
+            const subject = "Reset Password"
+            helper.sendMail(user.email , user._id , message , subject)
+            helper.resHandler(res, 200, true, {}, "password reset email sent successfully")
+        }
+        catch(err){
+            helper.resHandler(res, 500, false, err, err.message)
+        }
+    }
+
+    static resetPassword = async (req, res) => {
+        try{
+            const user = await userModel.findById(req.params.id)
+            user.password = req.body.password
+            await user.save()
+            helper.resHandler(res, 200, true, user, "password changed successfully")
         }
         catch(err){
             helper.resHandler(res, 500, false, err, err.message)

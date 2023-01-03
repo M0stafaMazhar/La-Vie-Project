@@ -31,13 +31,11 @@ const userSchema = new mongoose.Schema({
     googleId:{
         type: String,
         trim: true,
-        unique: true
     },
 
     facebookId:{
         type: String,
         trim: true,
-        unique: true
     },
 
     email:{

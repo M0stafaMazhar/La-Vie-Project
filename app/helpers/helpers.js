@@ -9,7 +9,7 @@ class Helper{
         })
     } 
 
-    static sendMail (email , id){
+    static sendMail (email , id , message , subject){
     const transporter = nodemailer.createTransport({
         service: process.env.EMAILSERVIVE,
         auth: {
@@ -21,8 +21,8 @@ class Helper{
       var mailOptions = {
         from: 'fifa.m0stafa.mazhar@gmail.com',
         to: email,
-        subject: 'Confirmation mail',
-        text: 'thanks for signing up to La Vie, please click the following link to verify your email address: http://localhost:3000/api/user/verify/'+id
+        subject: subject,
+        text: message + id
       };
     
       transporter.sendMail(mailOptions, function(error, info){
