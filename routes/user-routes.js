@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const user = require('../../socialApp/app/controlers/user-controllers');
 const userControllers = require('../app/controllers/user-controllers')
 const {auth} = require('../app/helpers/middleware')
 const passport = require('../app/passport')
@@ -34,6 +33,10 @@ router.post("/add-image" , auth , upload.single("avatar") , userControllers.uplo
 router.get("/orders" , auth , userControllers.orders)
 router.get("/shoping-cart" , auth , userControllers.shopingCart)
 router.get("/my-points" , auth , userControllers.points)
+
+
+router.get("/my-blogs" , auth , userControllers.myBlogs)
+router.get("/blogs/:id" , userControllers.userBlogs)
 
 
 

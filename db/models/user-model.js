@@ -75,12 +75,12 @@ const userSchema = new mongoose.Schema({
 
     tokens:[],
 
-    // level:{
-    //     type: String,
-    //     required: true,
-    //     trim: true,
-    //     enum: ['beginner' , 'advanced' , 'professional']
-    // },
+    level:{
+        type: String,
+        // required: true,
+        trim: true,
+        enum: ['beginner' , 'advanced' , 'professional']
+    },
 
     image:{
         type: String,
@@ -124,10 +124,6 @@ const userSchema = new mongoose.Schema({
 
     bookMarks:[{}],
 
-    posts:[{}],
-
-    likes:[{}],
-
     points:{},
 
     orders:[{}],
@@ -144,6 +140,14 @@ userSchema.pre('save', async function() {
         this.password = await bcryptjs.hash(this.password, 5)
     }
 })
+
+
+userSchema.virtual("myBlogs" ,{
+    ref: "blogs",
+    localField: "_id",
+    foreignField: "autherId",
+    match:{isMine: true},
+} )
 
 
 userSchema.statics.loginUser = async(email, password)=>{

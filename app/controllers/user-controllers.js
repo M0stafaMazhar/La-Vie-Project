@@ -1,8 +1,10 @@
 const helper = require('../helpers/helpers')
 const userModel = require('../../db/models/user-model')
 const jwt = require("jsonwebtoken")
-
 class UserContrllers{
+
+    // authentication
+    
     static register = async (req , res)=>{
         try{
             const userData = new userModel(req.body)
@@ -95,7 +97,7 @@ class UserContrllers{
     
 
 
-
+    //user profile
 
     static profile = async (req , res)=>{
         try{
@@ -164,6 +166,27 @@ class UserContrllers{
     static points = async (req, res) => {
         try{
             helper.resHandler(res, 200, true , req.user.points , "shoping cart sent successfully")
+        }
+        catch(err){
+            helper.resHandler(res, 500, false, err, err.message)
+        }
+    }
+
+    static myBlogs = async (req, res) => {
+        try{
+            await req.user.populate("myBlogs")
+            helper.resHandler(res, 200, true, req.user.myBlogs , "user own blogs")
+        }
+        catch(err){
+            helper.resHandler(res, 500, false, err, err.message)
+        }
+    }
+
+    static userBlogs = async(req, res)=>{
+        try{
+            const userData = await userModel.findById(req.params.id)
+            await userData.populate("myBlogs")
+            helper.resHandler(res, 200, true, userData.myBlogs, "user blogs data")
         }
         catch(err){
             helper.resHandler(res, 500, false, err, err.message)
