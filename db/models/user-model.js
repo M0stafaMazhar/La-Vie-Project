@@ -60,6 +60,10 @@ const userSchema = new mongoose.Schema({
         },
         // match: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
     },
+    resetToken:{
+        type: String,
+        trim: true,
+    },
 
     verified:{
         type: Boolean,
@@ -160,6 +164,13 @@ userSchema.methods.generateToken = async function(){
     return token;
 }
 
+userSchema.methods.generateResetToken = async function(confCode){
+    const userData = this;
+    const resetToken = jwt.sign({code : confCode}, process.env.PASS , { expiresIn: 2 * 60 })
+    userData.resetToken = resetToken
+    await userData.save();
+}
+
 
 
 
@@ -174,6 +185,8 @@ userSchema.methods.toJSON = function(){
     delete data.tokens;
     delete data.googleId;
     delete data.facebookId;
+    delete data.resetToken;
+    delete data.verified;
     return data;
 }
 

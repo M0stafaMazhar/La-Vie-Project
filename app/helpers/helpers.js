@@ -9,7 +9,7 @@ class Helper{
         })
     } 
 
-    static sendMail (email , id , message , subject){
+    static sendMail (email , message , subject){
     const transporter = nodemailer.createTransport({
         service: process.env.EMAILSERVIVE,
         auth: {
@@ -22,7 +22,7 @@ class Helper{
         from: 'fifa.m0stafa.mazhar@gmail.com',
         to: email,
         subject: subject,
-        text: message + id
+        text: message
       };
     
       transporter.sendMail(mailOptions, function(error, info){
