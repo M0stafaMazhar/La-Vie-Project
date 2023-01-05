@@ -1248,6 +1248,160 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "quizes",
+			"item": [
+				{
+					"name": "add quistions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I3MGQ4ZTY0OTI0NzczZjhkZWY2NmUiLCJpYXQiOjE2NzI5NDA5NzF9.1IOxm7n5zA5f6wDCxKzQcbLx_KBh98PDOgVwdvBIfpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"level\":\"advanced\",\r\n    \"points\":2,\r\n    \"question\":\"what is the collor of planst?\",\r\n    \"answers\":[{\"answer\":\"red\" , \"correct\":false} , {\"answer\":\"green\" , \"correct\":true} , {\"answer\":\"blue\" , \"correct\":false}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/quiz/add-question",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quiz",
+								"add-question"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit questions",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I3MGQ4ZTY0OTI0NzczZjhkZWY2NmUiLCJpYXQiOjE2NzI5NDA5NzF9.1IOxm7n5zA5f6wDCxKzQcbLx_KBh98PDOgVwdvBIfpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"level\":\"advanced\",\r\n    \"points\"52,\r\n    \"question\":\"what is the collor of sky\",\r\n    \"answers\":[{\"answer\":\"red\" , \"correct\":false} , {\"answer\":\"green\" , \"correct\":false} , {\"answer\":\"blue\" , \"correct\":true}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/quiz/edit-question/(question id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quiz",
+								"edit-question",
+								"(question id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit questions Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I3MGQ4ZTY0OTI0NzczZjhkZWY2NmUiLCJpYXQiOjE2NzI5NDA5NzF9.1IOxm7n5zA5f6wDCxKzQcbLx_KBh98PDOgVwdvBIfpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/quiz/delete-question/(question id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quiz",
+								"delete-question",
+								"(question id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get quiz",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I3MGQ4ZTY0OTI0NzczZjhkZWY2NmUiLCJpYXQiOjE2NzI5NDA5NzF9.1IOxm7n5zA5f6wDCxKzQcbLx_KBh98PDOgVwdvBIfpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/quiz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quiz"
+							]
+						},
+						"description": "get all quiestions that match the user level"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
