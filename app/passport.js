@@ -17,8 +17,8 @@ passport.deserializeUser((user , done)=>{
 
 
 passport.use(new googleStrategy({
-    clientID: "111610478443-armoc1bvtk4jg6adg0k89bt4p384nmqh.apps.googleusercontent.com",
-    clientSecret: "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",
+    clientID: process.env.GCID ,
+    clientSecret: process.env.GCS ,
     callbackURL: "/api/user/login/google-redirect",
 }, async (accessToken , refreshToken , profile, done)=>{
     try{
@@ -46,8 +46,8 @@ passport.use(new googleStrategy({
 
 
 passport.use(new facebookStrategy({
-    clientID: "627037639178970",
-    clientSecret:"33b8384f8ce811f2b900c8c5f8e852be",
+    clientID: process.env.FCID ,
+    clientSecret: process.env.FCS, 
     callbackURL: "/api/user/login/facebook-redirect",
     profileFields: ['id', 'displayName', 'email', 'first_name', 'middle_name', 'last_name']
 }, async (accessToken , refreshToken , profile, done)=>{

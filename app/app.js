@@ -5,6 +5,7 @@ const passport = require('passport')
 const session = require('express-session')
 const userRouter = require('../routes/user-routes')
 const blogRouter = require('../routes/blogs-routes')
+const quizRouter = require('../routes/quize-routes')
 
 
 app.use(session({secret:"asas"}))
@@ -15,6 +16,7 @@ app.use(passport.session())
 app.use(express.json())
 app.use("/api/user/" , userRouter)
 app.use("/api/blog/", blogRouter)
+app.use("/api/quiz/", quizRouter)
 
 
 

@@ -124,7 +124,10 @@ const userSchema = new mongoose.Schema({
 
     bookMarks:[{}],
 
-    points:{},
+    points:{
+        type: Number,
+        default: 0
+    },
 
     orders:[{}],
 
