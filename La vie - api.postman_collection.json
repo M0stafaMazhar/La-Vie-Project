@@ -1326,7 +1326,7 @@
 					"response": []
 				},
 				{
-					"name": "edit questions Copy",
+					"name": "delete questions",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1398,6 +1398,46 @@
 							]
 						},
 						"description": "get all quiestions that match the user level"
+					},
+					"response": []
+				},
+				{
+					"name": "answers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I3MGQ4ZTY0OTI0NzczZjhkZWY2NmUiLCJpYXQiOjE2NzI5NDA5NzF9.1IOxm7n5zA5f6wDCxKzQcbLx_KBh98PDOgVwdvBIfpA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answers\":[{\"_id\":\"\" , \"status\":\"true\"} , {\"_id\":\"\" , \"status\":\"true\"} , {\"_id\":\"\" , \"status\":\"false\"} ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/quiz/answer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"quiz",
+								"answer"
+							]
+						},
+						"description": "we send the an array of objects of the user answers contains question id and status indicates if the user solved the question correct or not  \nall the right answers pointes are added together then added to the users reward points"
 					},
 					"response": []
 				}
