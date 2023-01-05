@@ -75,11 +75,18 @@ const userSchema = new mongoose.Schema({
 
     tokens:[],
 
+    userType:{
+        type: String,
+        trim: true,
+        enum: ['user', 'partner', 'expert' , 'admin' , 'superAdmin'],
+        default: 'user',
+    },
+
     level:{
         type: String,
-        // required: true,
         trim: true,
-        enum: ['beginner' , 'advanced' , 'professional']
+        enum: ['beginner' , 'advanced' , 'professional'],
+        default: 'beginner'
     },
 
     image:{
@@ -91,7 +98,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
         validate(value){
-            if(validator.isMobilePhone(value , "ar-EG")){
+            if(validator.isMobilePhone(value , 'ar-EG')){
                 throw new Error("invalid phone number")
         }
         }
@@ -131,7 +138,16 @@ const userSchema = new mongoose.Schema({
 
     orders:[{}],
 
-    shopingCart:[{}]
+    shopingCart:[{
+        productId:{
+            type: mongoose.Types.ObjectId,
+            ref: 'products'
+        },
+
+        productName:{
+            type: String,
+        }
+    }]
 
     
 
@@ -149,6 +165,13 @@ userSchema.virtual("myBlogs" ,{
     ref: "blogs",
     localField: "_id",
     foreignField: "autherId",
+    match:{isMine: true},
+} )
+
+userSchema.virtual("myProducts" ,{
+    ref: "products",
+    localField: "_id",
+    foreignField: "sellerId",
     match:{isMine: true},
 } )
 

@@ -156,7 +156,7 @@ class UserContrllers{
 
     static shopingCart = async (req, res) => {
         try{
-            helper.resHandler(res, 200, true , req.user.shopingCart , "shoping cart sent successfully")
+            helper.resHandler(res, 200, true , {cart:req.user.shopingCart , points: req.user.points} , "shoping cart sent successfully")
         }
         catch(err){
             helper.resHandler(res, 500, false, err, err.message)

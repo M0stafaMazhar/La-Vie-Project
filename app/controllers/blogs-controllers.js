@@ -133,7 +133,7 @@ class Blogs{
         try{
             const blogData = await blogModel.findById(req.params.id)
             if(!blogData) throw new Error("couldn't find blog")
-            req.user.bookMarks.push(blogData._id)
+            req.user.bookMarks.push({type:"blog" , blogId :blogData._id})
             await req.user.save()
             helper.resHandler(res, 200, true, req.user.bookMarks, "book mark added successfully")
         }

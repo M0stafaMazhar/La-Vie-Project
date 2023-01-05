@@ -44,7 +44,11 @@ const questionSchema = mongoose.Schema({
 
 
 
-
+questionSchema.methods.toJSON = function(){
+    const data = this.toObject();
+    delete data.__v;
+    return data;
+}
 
 
 

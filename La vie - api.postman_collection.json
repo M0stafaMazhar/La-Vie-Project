@@ -1,0 +1,1253 @@
+{
+	"info": {
+		"_postman_id": "fb08313f-6f22-474f-97aa-664db78b6043",
+		"name": "La vie - api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23788611"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fName\":\"Mostafa\", \r\n    \"lName\":\"Mazhar\",  \r\n    \"email\":\"xaxis88469@letpays.com\", \r\n    \"password\":\"MmM123456**\", \r\n    \"phone\":\"011077777777\",\r\n    \"gender\":\"male\",\r\n    \"level\":\"advanced\", \r\n    \"age\":24,\r\n    \"userType\":\"partner\", \r\n    \"education\":\"Masters\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						},
+						"description": "register the user by entering his info (fName , lName , email , password),\n\nand also can add some optional personal info(phone , gender , age , .....)"
+					},
+					"response": []
+				},
+				{
+					"name": "verify email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/verify/{{user _id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"verify",
+								"{{user _id}}"
+							]
+						},
+						"description": "before the user login he needs to verify his email address by clickin the link sent to him via email"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"email\":\"xaxis88469@letpays.com\", \r\n    \"password\":\"MmM123456**\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						},
+						"description": "the user needs to enter his email & password to be able to log in"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU2MDN9.kUAXxdCzTwCKO77NJGWPZEj48kyFb7rIakJwwOAbQs8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/user/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login using googl",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/login/google",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login",
+								"google"
+							]
+						},
+						"description": "this route redirect the user to register using his google account"
+					},
+					"response": []
+				},
+				{
+					"name": "facebook login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/login/facebook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"login",
+								"facebook"
+							]
+						},
+						"description": "this route redirect the user to register using his facebook account"
+					},
+					"response": []
+				},
+				{
+					"name": "forget password",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"xaxis88469@letpays.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/forgot-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"forgot-password"
+							]
+						},
+						"description": "the user enters his email and if it is register in the database an email with the confirmtion code will be sent to the email"
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"xaxis88469@letpays.com\",\r\n    \"password\":\"sdskolddmfd\",\r\n    \"confCode\":934762\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"reset-password"
+							]
+						},
+						"description": "the user needs to enter his email , new password , confermation code sent to him  \nnote: the confirmation code expires after 3 minutes"
+					},
+					"response": []
+				},
+				{
+					"name": "user profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/user/my-profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"my-profile"
+							]
+						},
+						"description": "user own profile"
+					},
+					"response": []
+				},
+				{
+					"name": "other user profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/profile/63b6f5e1026415c65b0af875",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"profile",
+								"63b6f5e1026415c65b0af875"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fName\":\"Mohamed\", \r\n    \"lName\":\"Mazhar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/edit-profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"edit-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/user/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show points",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/user/my-points",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"my-points"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my shoping cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/user/shoping-cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"shoping-cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my blogs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/user/my-blogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"my-blogs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "blogs",
+			"item": [
+				{
+					"name": "add blog",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"first blog\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/add-blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"add-blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show blog",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"first blog\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/show-blog/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"show-blog",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all blogs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"first blog\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/all-blogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"all-blogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit blog",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"not first blog\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/edit-blog/63b701ff026415c65b0af896",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"edit-blog",
+								"63b701ff026415c65b0af896"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete blog",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/delete-blog/63b701ff026415c65b0af896",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"delete-blog",
+								"63b701ff026415c65b0af896"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"review\":{\"rating\": 2 , \"comment\":\"not bad\"}\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/add-review/(blog id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"add-review",
+								"(blog id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"review\":{\"rating\": 1 , \"comment\":\"very bad\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/edit-review/(blog id)/(review id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"edit-review",
+								"(blog id)",
+								"(review id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edlete reveiw",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/delete-review/(blog id)/(review id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"delete-review",
+								"(blog id)",
+								"(review id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show blog reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/show-reviews/(blog id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"show-reviews",
+								"(blog id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bookmark blog",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/blog/bookmark/(blog id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"blog",
+								"bookmark",
+								"(blog id)"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add review Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/products/add-review/(product id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"add-review",
+								"(product id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit review Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/products/edit-review/(product id)/(review id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"edit-review",
+								"(product id)",
+								"(review id)"
+							],
+							"query": [
+								{
+									"key": "authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edlete reveiw Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/products/delete-review/(product id)/(review id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"delete-review",
+								"(product id)",
+								"(review id)"
+							],
+							"query": [
+								{
+									"key": "authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show product reviews Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/show-reviews/(product id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"show-reviews",
+								"(product id)"
+							],
+							"query": [
+								{
+									"key": "authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bookmark blog Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/product/bookmark/(product id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"bookmark",
+								"(product id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\":\"some seeds\",\r\n    \r\n    \"description\": \"sdlskds sdkjsodksosk skds\",\r\n    \"price\":50,\r\n    \"stock\":11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/add-product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"add-product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/show-product/(product id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"show-product",
+								"(product id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\":\"plants\",\r\n    \r\n    \"description\": \"sdlskds sdkjsodksosk skds\",\r\n    \"price\":500,\r\n    \"stock\":166\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/edit-product/63b70884026415c65b0af8a4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"edit-product",
+								"63b70884026415c65b0af8a4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\":\"plants\",\r\n    \r\n    \"description\": \"sdlskds sdkjsodksosk skds\",\r\n    \"price\":500,\r\n    \"stock\":166\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/delete-product/63b70884026415c65b0af8a4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"delete-product",
+								"63b70884026415c65b0af8a4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add to cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/add-to-cart/(product id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"add-to-cart",
+								"(product id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove from cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2I2ZjVlMTAyNjQxNWM2NWIwYWY4NzUiLCJpYXQiOjE2NzI5MzU1NTV9.oI3edNIMmRp2U0cOZQHrq0_MNSW1MOKTq-H3_CMsek0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/remove-from-cart/(product id)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"remove-from-cart",
+								"(product id)"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

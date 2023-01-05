@@ -6,6 +6,7 @@ const session = require('express-session')
 const userRouter = require('../routes/user-routes')
 const blogRouter = require('../routes/blogs-routes')
 const quizRouter = require('../routes/quize-routes')
+const productRouter = require('../routes/products-routes')
 
 
 app.use(session({secret:"asas"}))
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use("/api/user/" , userRouter)
 app.use("/api/blog/", blogRouter)
 app.use("/api/quiz/", quizRouter)
+app.use("/api/products/", productRouter)
 
 
 
