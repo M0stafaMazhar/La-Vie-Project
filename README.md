@@ -1,12 +1,36 @@
-la vie project
- 
- 
- user can register by entering his email and recive a confirmation message or he can login using facebook or google accounts
- 
- he can reset his password by requisting a confirmation code sent to his email then enter it in the website within 3 minutes
- 
- user can show and edit his information , show products and blogs and write reviews and edit his reviews(if the user is the seller or the auther of the blog he cant review him self)
- 
- only userstype partner can add products
- 
- the quiz queistions can be added , edited or removed by the admin only
+authentcation:
+
+-login:
+the user can log in:
+1- via his email address and recive a confirmation mail
+2- using his social account(google or facebook)
+the user can login from multiple devices
+
+-logout:
+user can logout from his device session
+
+
+-forget password:
+if the user can't remmember his password he can enter his email and recive a confirmation code via his email that expires in 3 minutes ,he must enter he code and new password to reset his password
+
+
+
+
+profile:
+every user can :
+-show his profile
+-show others profiles(gets less information)
+-edit his information
+-read blogs
+-add/edit/delete his blogs
+-browse products 
+-if the user is a partner he can add/edit/delete/show his products
+-add reviws on blogs and products (unless he is the auther of the blog or the seller of the product)
+-read all reviews of every single blog/product
+-read single review of every single blog/product
+-delete or edit his review
+
+
+
+quiz:
+the user can take MCQ quizez based on his level to get points
