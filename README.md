@@ -18,7 +18,7 @@
 
 ## Profile:
 - Every user can :
- - show his profile
+ [x] show his profile
  - show others profiles(gets less information)
  - edit his information
  - read blogs
